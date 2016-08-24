@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/ulizko/api_flashcards/badges/gpa.svg)](https://codeclimate.com/github/ulizko/api_flashcards)
+
 # ApiFlashcards
 Short description and motivation.
 
