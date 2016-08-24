@@ -1,4 +1,5 @@
 require File.expand_path("../../spec/dummy/config/environment", __FILE__)
+require 'factory_girl_rails'
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
