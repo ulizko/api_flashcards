@@ -1,3 +1,6 @@
+[![Code Climate](https://codeclimate.com/github/ulizko/api_flashcards/badges/gpa.svg)](https://codeclimate.com/github/ulizko/api_flashcards)
+[![Build Status](https://travis-ci.org/ulizko/api_flashcards.svg?branch=master)](https://travis-ci.org/ulizko/api_flashcards)
+
 # ApiFlashcards
 Short description and motivation.
 
