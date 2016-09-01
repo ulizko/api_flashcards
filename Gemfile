@@ -12,3 +12,5 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+gem 'active_model_serializers', '~> 0.10.0'
+gem 'responders'
