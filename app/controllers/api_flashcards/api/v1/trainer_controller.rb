@@ -21,7 +21,7 @@ module ApiFlashcards
         end
 
         private
-    
+
         def user_translation
           params[:user_translation]
         end

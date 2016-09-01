@@ -7,9 +7,9 @@ module ApiFlashcards
 
       attr_reader :current_user
       before_action :authenticate
-  
+
       private
-  
+
       def authenticate
         authenticate_or_request_with_http_basic do |email, password|
           begin
@@ -20,7 +20,7 @@ module ApiFlashcards
           end
         end
       end
-      
+
       def current_user
         @current_user ||= @user
       end
