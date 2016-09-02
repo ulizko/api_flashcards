@@ -2,7 +2,7 @@ class Card < ApplicationRecord
   belongs_to :user
   before_create :set_review_date_as_now
 
-  validates_presence_of :original_text, :translated_text, :review_date
+  validates_presence_of :original_text, :translated_text
 
   scope :pending, -> { where('review_date <= ?', Time.now).order('RANDOM()') }
   scope :repeating, -> { where('quality < ?', 4).order('RANDOM()') }

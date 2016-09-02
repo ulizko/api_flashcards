@@ -6,6 +6,7 @@ AllCops:
   Exclude:
   - "vendor/**/*"
   - "db/**/*"
+  - "spec/dummy/db/**/*"
 Documentation:
   Enabled: false
 Style/StringLiterals:
@@ -51,4 +52,6 @@ DotPosition:
 Style/SpaceInsideHashLiteralBraces:
   Description: "Use spaces inside hash literal braces - or don't."
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#spaces-operators'
+  Enabled: false
+Style/SpaceInsideBrackets:
   Enabled: false

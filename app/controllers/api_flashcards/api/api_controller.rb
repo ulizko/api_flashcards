@@ -3,6 +3,7 @@ module ApiFlashcards
     class ApiController < ActionController::API
       include ActionController::HttpAuthentication::Basic::ControllerMethods
       include ActionController::MimeResponds
+      include AbstractController::Translation
       include AbstractController::Callbacks
 
       attr_reader :current_user

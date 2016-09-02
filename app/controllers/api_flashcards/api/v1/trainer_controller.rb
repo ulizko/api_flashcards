@@ -10,12 +10,12 @@ module ApiFlashcards
 
         def review_card
           check_result = @card.check_translation(user_translation)
-          if check_result[:state] && check_result[:distance].zero?
-            msg = "Right. Let's check next card."
+          msg = if check_result[:state] && check_result[:distance].zero?
+            t('.right')
           elsif check_result[:state]
-            msg = "Oops! Your answer is correct, but you made a typo. Right translate: #{@card.original_text}, you typed: #{user_translation}"
+            t('.oops', original_text: @card.original_text, user_translation: user_translation)
           else
-            msg = "Wrong! Try another card."
+            t('.wrong')
           end
           render json: { message: msg }, status: :ok
         end
