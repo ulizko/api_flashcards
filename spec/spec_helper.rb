@@ -3,7 +3,6 @@ require File.expand_path("../dummy/config/environment", __FILE__)
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
-  
   config.include ApiHelper, type: :api
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

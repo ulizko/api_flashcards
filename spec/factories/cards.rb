@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :card do
-    original_text 'house'
-    translated_text 'дом'
+    sequence(:original_text, ['a'..'z']) { |n| "house#{n}" }
+    sequence(:translated_text, ['a'..'z']) { |n| "дом#{n}" }
     review_date Time.now
     interval 1
     repeat 1

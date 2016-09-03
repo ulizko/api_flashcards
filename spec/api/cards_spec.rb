@@ -36,7 +36,7 @@ module ApiFlashcards
             end
           end
         end
-        
+
         context 'create card' do
           let(:attr) do
             { original_text: 'car', translated_text: 'машина' }
@@ -45,7 +45,7 @@ module ApiFlashcards
           it 'have status created' do
             basic_authorize(user.email, user.password)
             post '/api_flashcards/api/v1/cards',  card: attr
-            expect(last_response.status).to eq 201 
+            expect(last_response.status).to eq 201
           end
         end
       end
