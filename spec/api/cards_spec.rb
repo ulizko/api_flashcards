@@ -44,7 +44,7 @@ module ApiFlashcards
 
           it 'have status created' do
             basic_authorize(user.email, user.password)
-            post '/api_flashcards/api/v1/cards',  card: attr
+            post '/api_flashcards/api/v1/cards', card: attr
             expect(last_response.status).to eq 201
           end
         end

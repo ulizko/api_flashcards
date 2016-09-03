@@ -19,7 +19,6 @@ group :development do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'rubocop'
-  gem 'levenshtein'
   gem 'sqlite3'
 end
 
@@ -27,6 +26,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'json_spec'
+  gem 'levenshtein'
 end
 
 group :test do

@@ -7,7 +7,7 @@ module ApiFlashcards
         let!(:user) { FactoryGirl.create(:user) }
         let!(:cards) { FactoryGirl.create_list(:card, 4, user: user) }
 
-        context 'show not reviewed cards' do
+        describe 'show not reviewed cards' do
           before do
             basic_authorize(user.email, user.password)
             get '/api_flashcards/api/v1/trainer'
@@ -25,6 +25,35 @@ module ApiFlashcards
 
           it 'don\'t contains original_text' do
             expect(JSON.parse(last_response.body).first).not_to include('original_text')
+          end
+        end
+
+        describe 'review card' do
+          let(:card) { FactoryGirl.create(:card, user: user) }
+          let(:attr) do
+            { id: card.id, user_translation: card.original_text }
+          end
+
+          before { basic_authorize(user.email, user.password) }
+
+          it 'should return right message' do
+            put '/api_flashcards/api/v1/review_card', attr
+            message = {message: I18n.t('api_flashcards.api.v1.trainer.review_card.right')}.to_json
+            expect(last_response.body).to be_json_eql(message)
+          end
+
+          it 'should return oops message' do
+            put '/api_flashcards/api/v1/review_card', attr.merge(user_translation: 'house')
+            message = {message: I18n.t('api_flashcards.api.v1.trainer.review_card.oops',
+                                       original_text: card.original_text,
+                                       user_translation: 'house')}.to_json
+            expect(last_response.body).to be_json_eql(message)
+          end
+
+          it 'should return wrong message' do
+            put '/api_flashcards/api/v1/review_card', attr.merge(user_translation: 'hous')
+            message = {message: I18n.t('api_flashcards.api.v1.trainer.review_card.wrong')}.to_json
+            expect(last_response.body).to be_json_eql(message)
           end
         end
       end

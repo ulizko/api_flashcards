@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Autenticate', type: :api do
-
   let!(:user) { FactoryGirl.create(:user) }
 
   context 'not success authenticate' do
