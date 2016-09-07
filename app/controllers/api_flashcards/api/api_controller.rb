@@ -4,7 +4,6 @@ module ApiFlashcards
       include ActionController::HttpAuthentication::Basic::ControllerMethods
       include ActionController::MimeResponds
       include AbstractController::Translation
-      include AbstractController::Callbacks
 
       attr_reader :current_user
       before_action :authenticate

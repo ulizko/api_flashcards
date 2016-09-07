@@ -8,7 +8,7 @@ module ApiFlashcards
         let!(:cards) { FactoryGirl.create_list(:card, 3, user: user) }
 
         context 'get all user\'s cards' do
-          before(:each) do
+          before do
             basic_authorize(user.email, user.password)
             get '/api_flashcards/api/v1/cards'
           end
@@ -25,9 +25,9 @@ module ApiFlashcards
         context 'show card' do
           let!(:card) { FactoryGirl.create(:card, user: user) }
 
-          before(:each) do
+          before do
             basic_authorize(user.email, user.password)
-            get '/api_flashcards/api/v1/cards/4'
+            get api_v1_card_path(4)
           end
 
           %w(id original_text translated_text review_date).each do |attr|
@@ -44,7 +44,7 @@ module ApiFlashcards
 
           it 'have status created' do
             basic_authorize(user.email, user.password)
-            post '/api_flashcards/api/v1/cards', card: attr
+            post api_v1_cards_path, card: attr
             expect(last_response.status).to eq 201
           end
         end

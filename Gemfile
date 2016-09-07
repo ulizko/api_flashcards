@@ -16,6 +16,7 @@ gem "active_model_serializers", "~> 0.10.0"
 gem "responders"
 
 group :development do
+  gem 'yard'
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'rubocop'

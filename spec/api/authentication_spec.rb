@@ -6,7 +6,7 @@ RSpec.describe 'Autenticate', type: :api do
   context 'not success authenticate' do
     it 'have\'t access to api' do
       basic_authorize(user.email, 'wrong')
-      get 'api_flashcards/api/v1/cards'
+      get api_v1_cards_path
       expect(last_response.status).to eq 401
     end
   end
@@ -14,7 +14,7 @@ RSpec.describe 'Autenticate', type: :api do
   context 'success authenticate' do
     it 'have access to api' do
       basic_authorize(user.email, user.password)
-      get 'api_flashcards/api/v1/cards'
+      get api_v1_cards_path
       expect(last_response.status).to eq 200
     end
   end

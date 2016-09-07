@@ -13,6 +13,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::RSpecMatchers
+  config.include ApiFlashcards::Engine.routes.url_helpers
 
   config.use_transactional_fixtures = false
 

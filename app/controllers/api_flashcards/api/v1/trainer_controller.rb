@@ -4,11 +4,19 @@ module ApiFlashcards
       class TrainerController < ApiFlashcards::Api::ApiController
         before_action :find_card, only: :review_card
 
+        # Handles a GET request /api/v1/trainer
+        # Show all not reviewed cards ordered by id
+        #
+        # @return [JSON] list of cards contains only id and translated text
         def index
           @cards = current_user.cards.pending || current_user.cards.repeating
           render json: @cards.sort_by(&:id), each_serializer: TrainerSerializer
         end
 
+        # Handles a PUT request /api/v1/review_card
+        # Check the correctness of the translation of the user.
+        # @param id [Integer], user_translation [String]
+        # @return [JSON] list of cards contains only id and translated text
         def review_card
           check_result = @card.check_translation(user_translation)
           msg = if check_result[:state] && check_result[:distance].zero?

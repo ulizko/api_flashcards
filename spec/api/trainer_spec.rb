@@ -10,7 +10,7 @@ module ApiFlashcards
         describe 'show not reviewed cards' do
           before do
             basic_authorize(user.email, user.password)
-            get '/api_flashcards/api/v1/trainer'
+            get api_v1_trainer_path
           end
 
           it 'should have status ok' do
@@ -37,13 +37,13 @@ module ApiFlashcards
           before { basic_authorize(user.email, user.password) }
 
           it 'should return right message' do
-            put '/api_flashcards/api/v1/review_card', attr
+            put api_v1_review_card_path, attr
             message = {message: I18n.t('api_flashcards.api.v1.trainer.review_card.right')}.to_json
             expect(last_response.body).to be_json_eql(message)
           end
 
           it 'should return oops message' do
-            put '/api_flashcards/api/v1/review_card', attr.merge(user_translation: 'house')
+            put api_v1_review_card_path, attr.merge(user_translation: 'house')
             message = {message: I18n.t('api_flashcards.api.v1.trainer.review_card.oops',
                                        original_text: card.original_text,
                                        user_translation: 'house')}.to_json
@@ -51,7 +51,7 @@ module ApiFlashcards
           end
 
           it 'should return wrong message' do
-            put '/api_flashcards/api/v1/review_card', attr.merge(user_translation: 'hous')
+            put api_v1_review_card_path, attr.merge(user_translation: 'hous')
             message = {message: I18n.t('api_flashcards.api.v1.trainer.review_card.wrong')}.to_json
             expect(last_response.body).to be_json_eql(message)
           end
