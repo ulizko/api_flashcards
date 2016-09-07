@@ -12,3 +12,25 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+gem "active_model_serializers", "~> 0.10.0"
+gem "responders"
+
+group :development do
+  gem 'yard'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'rubocop'
+  gem 'sqlite3'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'json_spec'
+  gem 'levenshtein'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+end

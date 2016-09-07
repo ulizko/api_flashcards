@@ -1,0 +1,9 @@
+en:
+  api_flashcards:
+    api:
+      v1:
+        trainer:
+          review_card:
+            right: "Right. Let's check next card."
+            oops: "Oops! Your answer is correct, but you made a typo. Right translate: %{original_text}, you typed: %{user_translation}"
+            wrong: "Wrong! Try another card."
